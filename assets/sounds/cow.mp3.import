@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cow.mp3-8d9bec28e3461fc4df8f43cf600a5b8b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/cow.mp3"
+dest_files=[ "res://.import/cow.mp3-8d9bec28e3461fc4df8f43cf600a5b8b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -226,6 +226,7 @@ func _physics_process(delta : float) -> void:
 	var free_wheel := true
 	
 	if control_mode != ControlMode.DISABLED:
+		
 		var control_index := ControlManager.player_assignment(player_id)
 		var action_prefix := ControlManager.action_prefix(control_index)
 		# var action_boost := Input.get_action_strength(action_prefix + "boost") > 0
@@ -233,6 +234,12 @@ func _physics_process(delta : float) -> void:
 		var action_backward := Input.get_action_strength(action_prefix + "down")
 		var action_left := Input.get_action_strength(action_prefix + "left")
 		var action_right := Input.get_action_strength(action_prefix + "right")
+		
+		if action_forward || action_backward || action_right || action_left:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.set_frame(0)
+			$AnimatedSprite.stop()
 		if _record != null:
 			if control_mode == ControlMode.REPLAY:
 				var actions := _record.get_controls()
@@ -428,7 +435,7 @@ func _set_ghost_mode(ghost : bool) -> void:
 
 func _set_color(c : Color) -> void:
 	color = c
-	$SpriteModulate.modulate = c
+	$AnimatedSprite.modulate = c
 
 func get_control_anchor() -> Node2D:
 	return $ControlAnchor as Node2D
